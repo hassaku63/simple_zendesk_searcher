@@ -23,7 +23,6 @@ logger.setLevel(INFO)
 
 def main():
     parser = argparse.ArgumentParser(
-        prog='Zendesk ticket search',
         description="""Zendesk APIはsubdomain/email/token の3つを認証情報として要求します。
 		環境変数ZENDESK_SUBDOMAIN, ZENDESK_EMAIL, ZENDESK_TOKENで定義するか、
 		コマンドライン引数で直接指定してください。
