@@ -99,13 +99,13 @@ def main():
                 r.requester.id,
                 r.requester.name if r.requester is not None else '',
                 r.assignee_id,
-                r.assignee.name if r.assignee.name is not None else '',
+                r.assignee.name if r.assignee is not None else '',
                 r.status,
                 r.url
             ])
         except Exception as e:
-            logger.info(f'skip ticketId={r.id}, url={r.url}')
-            logger.info(f'exception: {e}')
+            logger.warning(f'skip ticketId={r.id}, url={r.url}')
+            logger.warning(f'exception: {e}')
             continue
 
     with open(args.output, 'w') as fp:
