@@ -69,27 +69,45 @@ def main():
     if getattr(args, 'token', False):
         credential['token'] = args.token
 
-        zendesk_client = Zenpy(**credential)
+    zendesk_client = Zenpy(**credential)
 
-        resp = list(zendesk_client.search(args.keyword))
+    resp = list(zendesk_client.search(args.keyword))
 
-        rows = []
-        for r in tqdm(resp):
-            try:
-                rows.append([
-                    r.type,
-                    r.id,
-                    r.created_at,
-                    r.subject,
-                    r.organization_id,
-                    r.organization.name,
-                    r.status,
-                    r.url
-                ])
-            except Exception as e:
-                logger.info(f'skip ticketId={r.id}, url={r.url}')
-                logger.info(f'exception: {e}')
-                continue
+    rows = []
+    rows.append([
+        'type',
+        'id',
+        'created_at',
+        'subject',
+        'organization_id',
+        'organization_name',
+        'requester_id',
+        'requester_name',
+        'assignee_id',
+        'assignee_name',
+        'status',
+        'url'
+    ])
+    for r in tqdm(resp):
+        try:
+            rows.append([
+                r.type,
+                r.id,
+                r.created_at,
+                r.subject,
+                r.organization_id,
+                r.organization.name if r.organization is not None else '',
+                r.requester.id,
+                r.requester.name if r.requester is not None else '',
+                r.assignee_id,
+                r.assignee.name if r.assignee.name is not None else '',
+                r.status,
+                r.url
+            ])
+        except Exception as e:
+            logger.info(f'skip ticketId={r.id}, url={r.url}')
+            logger.info(f'exception: {e}')
+            continue
 
     with open(args.output, 'w') as fp:
         wr = csv.writer(fp)
