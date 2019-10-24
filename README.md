@@ -34,7 +34,7 @@ export ZENDESK_TOKEN=<your-token>
 execute `simple_zendesk_search` .
 
 ```text
-usage: Zendesk ticket search [-h] --keyword KEYWORD [--subdomain SUBDOMAIN]
+usage: simple_zendesk_search [-h] --keyword KEYWORD [--subdomain SUBDOMAIN]
                              [--email EMAIL] [--token TOKEN] [--output OUTPUT]
 
 Zendesk APIはsubdomain/email/token の3つを認証情報として要求します。 環境変数ZENDESK_SUBDOMAIN,
