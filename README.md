@@ -7,11 +7,17 @@
 ## Installation
 
 ```bash
-git clone '<this-repo>'
+git clone git@github.com:hassaku63/simple_zendesk_searcher.git
 
 cd '<cloned-dir>'
 
 pip install .
+```
+
+or
+
+```text
+pip install git+https://github.com/hassaku63/simple_zendesk_searcher.git
 ```
 
 ## Set env
