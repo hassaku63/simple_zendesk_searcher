@@ -20,8 +20,9 @@ setup(
     long_description_content_type='text/markdown',
     author='hassaku63',
     author_email='takuyahashimoto1988@gmail.com',
-    # license='',
+    license='MIT',
     classifiers=[
+        'License :: OSI Approved :: MIT License',
         'Development Status :: 3 - Alpha',
         'Programming Language :: Python',
         'Natural Language :: Japanese',
